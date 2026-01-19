@@ -23,7 +23,7 @@ my_project/                  # 프로젝트 최상위 폴더
 
 ### Bounding Box
 ```python
-PROMPT_BBOX = """
+PROMPT = """
 Return bounding boxes for all items in the image.
 Return bounding boxes as a JSON array with labels. Never return masks or code fencing.
 The format should be as follows: [{"box_2d": [ymin, xmin, ymax, xmax], "label": <label>}]
@@ -34,7 +34,7 @@ normalized to 0-1000.
 
 ### Object Labeling
 ```python
-PROMPT_POINT = """
+PROMPT = """
 Point to all identifiable items in the image.
 The label returned should be an identifying name for the object detected.
 The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...].
@@ -47,7 +47,7 @@ The points are in [y, x] format normalized to 0-1000.
 ```python
 # 세그멘테이션 프롬프트 예시
 objects_list = ["box tape", "air freshener", "liquid detergent refill pouch"]
-prompt = f"""
+PROMPT = f"""
 Provide the segmentation masks for the following objects in this image:
 {", ".join(objects_list)}.
 
@@ -70,7 +70,7 @@ the mask.
 
 ### Trajectory Generation
 ```python
-PROMPT_TRAJ = """
+PROMPT = """
 Identify a box containing liquid detergent refills and an empty box. Select one liquid detergent refill pouch from the filled box. Plan a trajectory to move it into the empty box.
 
 Place a starting point on the refill pouch, then 10 intermediate points along the path, then the final point inside the empty box.
