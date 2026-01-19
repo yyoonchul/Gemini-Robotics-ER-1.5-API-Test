@@ -45,7 +45,6 @@ The points are in [y, x] format normalized to 0-1000.
 
 ### Segmentation 
 ```python
-# 세그멘테이션 프롬프트 예시
 objects_list = ["box tape", "air freshener", "liquid detergent refill pouch"]
 PROMPT = f"""
 Provide the segmentation masks for the following objects in this image:
