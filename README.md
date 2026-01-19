@@ -22,16 +22,63 @@ my_project/                  # 프로젝트 최상위 폴더
 ![원본 이미지](src/original_img.png)
 
 ### Bounding Box
+```python
+PROMPT_BBOX = """
+Return bounding boxes for all items in the image.
+Return bounding boxes as a JSON array with labels. Never return masks or code fencing.
+The format should be as follows: [{"box_2d": [ymin, xmin, ymax, xmax], "label": <label>}]
+normalized to 0-1000.
+"""
+```
 ![Bounding Box](src/bb.png)
 
 ### Object Labeling
-![객체 인식](src/objects.png)
+```python
+PROMPT_POINT = """
+Point to all identifiable items in the image.
+The label returned should be an identifying name for the object detected.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...].
+The points are in [y, x] format normalized to 0-1000.
+"""
+```
+![Point Detection](src/objects.png)
 
-### Segmentation
-![세그멘테이션](src/segmentation.png)
+### Segmentation 
+```python
+# 세그멘테이션 프롬프트 예시
+objects_list = ["box tape", "air freshener", "liquid detergent refill pouch"]
+prompt = f"""
+Provide the segmentation masks for the following objects in this image:
+{", ".join(objects_list)}.
+
+The answer should follow the JSON format:
+[
+  {{
+    "box_2d": [ymin, xmin, ymax, xmax],
+    "label": "<label for the object>",
+    "mask": "data:image/png;base64,<base64 encoded PNG mask>"
+  }},
+  ...
+]
+
+The box_2d coordinates should be normalized to 0-1000 and must be integers.
+The mask should be a base64 encoded PNG image where non-zero pixels indicate
+the mask.
+"""
+```
+![Segmentation](src/segmentation.png)
 
 ### Trajectory Generation
-![궤적](src/traj.png)
+```python
+PROMPT_TRAJ = """
+Identify a box containing liquid detergent refills and an empty box. Select one liquid detergent refill pouch from the filled box. Plan a trajectory to move it into the empty box.
+
+Place a starting point on the refill pouch, then 10 intermediate points along the path, then the final point inside the empty box.
+
+The answer should follow the json format: [{"point": <point>, "label": <seq_num>}, ...].
+"""
+```
+![Trajectory](src/traj.png)
 
 ## 비디오 테스트
 
