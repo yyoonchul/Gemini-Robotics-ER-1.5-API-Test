@@ -19,7 +19,7 @@ my_project/                  # 프로젝트 최상위 폴더
 ## 이미지 테스트트
 
 ### 원본 이미지
-![원본 이미지](src/original_img.png)
+![원본 이미지](assets/original_img.png)
 
 ### Bounding Box
 ```python
@@ -30,7 +30,7 @@ The format should be as follows: [{"box_2d": [ymin, xmin, ymax, xmax], "label": 
 normalized to 0-1000.
 """
 ```
-![Bounding Box](src/bb.png)
+![Bounding Box](assets/bb.png)
 
 ### Object Labeling
 ```python
@@ -41,7 +41,7 @@ The answer should follow the json format: [{"point": <point>, "label": <label1>}
 The points are in [y, x] format normalized to 0-1000.
 """
 ```
-![Point Detection](src/objects.png)
+![Point Detection](assets/objects.png)
 
 ### Segmentation 
 ```python
@@ -65,7 +65,7 @@ The mask should be a base64 encoded PNG image where non-zero pixels indicate
 the mask.
 """
 ```
-![Segmentation](src/segmentation.png)
+![Segmentation](assets/segmentation.png)
 
 ### Trajectory Generation
 ```python
@@ -77,19 +77,19 @@ Place a starting point on the refill pouch, then 10 intermediate points along th
 The answer should follow the json format: [{"point": <point>, "label": <seq_num>}, ...].
 """
 ```
-![Trajectory](src/traj.png)
+![Trajectory](assets/traj.png)
 
 ## 비디오 테스트
 
 ### 원본 비디오
-![원본 비디오](src/original_video.gif)
+![원본 비디오](assets/original_video.gif)
 
 ### Object Tracking
 * 프레임 단위로 분리하여 처리
 * 프레임별로 요청을 하는 방식으로 테스트를 진행하여, 길이가 짧음(호출 횟수 제한)
 * 일부로 프레임 수를 낮추어 잡음(5 frame 단위로 처리)
 
-![오브젝트 트래킹](src/object_tracking.gif)
+![오브젝트 트래킹](assets/object_tracking.gif)
 
 
 ## 참고
