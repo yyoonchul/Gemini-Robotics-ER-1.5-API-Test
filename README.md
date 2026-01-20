@@ -82,12 +82,18 @@ The answer should follow the json format: [{"point": <point>, "label": <seq_num>
 ## 비디오 테스트
 
 ### 원본 비디오
-![원본 비디오](src/original_video.mp4)
+<video width="640" height="480" controls>
+  <source src="src/original_video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Object TRacking
 * 프레임 단위로 분리하여 처리
 * 프레임별로 요청을 하는 방식으로 테스트를 진행하여, 길이가 짧음(호출 횟수 제한)
-![오브젝트 트래킹](src/object_tracking.mp4)
+<video width="640" height="480" controls>
+  <source src="src/object_tracking.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
 ## 참고
